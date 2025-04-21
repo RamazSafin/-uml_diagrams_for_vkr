@@ -1,0 +1,39 @@
+@startuml
+class LocalGPTService {
+  -modelPath: string
+  +generateCode(prompt: string): string
+  +explainCode(code: string): string
+  +refactorCode(code: string): string
+  +findBugs(code: string): string[]
+}
+
+class CodeVisualizer {
+  -analyzer: CodeAnalyzer
+  +generateDependencyGraph(): Graph
+  +renderGraph(): void
+}
+
+class CodeAnalyzer {
+  -ast: AST
+  +parseCode(code: string): void
+  +extractDependencies(): Dependency[]
+}
+
+class ExtensionController {
+  -gpt: LocalGPTService
+  -visualizer: CodeVisualizer
+  +onGenerateCode(): void
+  +onExplainCode(): void
+  +onVisualizeArchitecture(): void
+}
+
+class "VS Code API" as VSCode {
+  +getActiveText(): string
+  +showInfoMessage(text: string): void
+}
+
+ExtensionController --> LocalGPTService
+ExtensionController --> CodeVisualizer
+CodeVisualizer --> CodeAnalyzer
+ExtensionController --> VSCode
+@enduml
