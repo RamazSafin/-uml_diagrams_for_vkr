@@ -1,0 +1,25 @@
+@startuml
+actor Программист as Dev
+participant "VS Code" as VSCode
+participant "ExtensionController" as Controller
+participant "LocalGPTService" as GPT
+participant "CodeAnalyzer" as Analyzer
+
+== Генерация кода ==
+Dev -> VSCode : Вводит запрос ("Напиши функцию сортировки")
+VSCode -> Controller : onGenerateCode(запрос)
+Controller -> GPT : generateCode(запрос)
+GPT --> Controller : "def sort(arr):..."
+Controller -> Analyzer : parseCode(код)
+Analyzer --> Controller : AST (без ошибок)
+Controller -> VSCode : Показать сгенерированный код
+VSCode --> Dev : Отображает результат
+
+== Визуализация проекта ==
+Dev -> VSCode : Запрашивает визуализацию кода
+VSCode -> Controller : onRequestCodeMap()
+Controller -> Analyzer : analyzeProjectStructure()
+Analyzer --> Controller : CodeMap (модули, зависимости, связи)
+Controller -> VSCode : Показать карту проекта
+VSCode --> Dev : Отображает визуализацию
+@enduml

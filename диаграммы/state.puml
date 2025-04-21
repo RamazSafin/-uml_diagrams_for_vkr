@@ -1,0 +1,18 @@
+@startuml
+[*] --> Idle
+
+Idle --> ModelLoading : Запуск расширения /\nмодель не загружена
+ModelLoading --> Idle : ModelReady
+ModelLoading --> Error : ErrorOccurred
+
+Idle --> ProcessingRequest : UserRequest
+ProcessingRequest --> ModelLoading : Нужна модель
+ProcessingRequest --> CodeAnalysis : Нужен анализ кода
+ProcessingRequest --> DisplayingResult : Результат готов
+
+CodeAnalysis --> DisplayingResult : AnalysisComplete
+DisplayingResult --> Idle : ResultShown
+
+Error --> Idle : Повторная попытка
+Error --> [*] : Критическая ошибка
+@enduml
