@@ -7,7 +7,7 @@
 
 > Отражает логику обработки пользовательского запроса, генерации кода и последующего анализа.
 
-![Диаграмма активностей](.diagrami/activity.jpg)
+![Диаграмма активностей](diagrami/activity.jpg)
 
 ```plantuml
 @startuml
@@ -42,7 +42,7 @@ stop
 
 > Показывает взаимодействие между компонентами расширения при генерации кода.
 
-![Диаграмма последовательности](.diagrami/sequence.jpg)
+![Диаграмма последовательности](diagrami/sequence.jpg)
 ```plantuml
 @startuml
 actor Программист as Dev
@@ -77,7 +77,7 @@ VSCode --> Dev : Отображает визуализацию
 
 > Иллюстрирует переходы между состояниями расширения: ожидание, загрузка, обработка запроса, вывод результата и ошибки.
 
-![Диаграмма состояний](.diagrami/state.jpg)
+![Диаграмма состояний](diagrami/state.jpg)
 ```plantuml
 @startuml
 [*] --> Idle
@@ -104,7 +104,7 @@ Error --> [*] : Критическая ошибка
 
 > Структура основных компонентов расширения и их связи.
 
-![Диаграмма классов](.diagrami/classes.jpg)
+![Диаграмма классов](diagrami/classes.jpg)
 ```plantuml
 @startuml
 class LocalGPTService {
@@ -152,7 +152,7 @@ ExtensionController --> VSCode
 
 > Общий обзор взаимодействия пользователя с расширением.
 
-![Диаграмма use case](.diagrami/use_case.jpg)
+![Диаграмма use case](diagrami/use_case.jpg)
 ```plantuml
 @startuml
 left to right direction
